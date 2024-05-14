@@ -1,0 +1,26 @@
+.sidenav-container {
+    height: 100%;
+}
+
+.mat-toolbar {
+    display: flex;
+    justify-content: space-between;
+}
+
+.example-spacer {
+    flex: 1 1 auto;
+}
+
+.active-link {
+    color: #f00; // 举例：红色字体
+    background-color: #ccc; // 举例：灰色背景
+}
+
+.custom-sidenav {
+  margin-top: 6px; /* 调整顶部间隔 */
+  padding: 0 6px; /* 在侧边栏的左右两侧添加10px的内部填充 */
+}
+
+.mat-nav-list {
+  margin-top: 10px; /* 菜单项之间的间隔 */
+}
