@@ -2,8 +2,9 @@
   <nz-layout>
     <nz-sider nzWidth="200" [nzCollapsed]="false" class="menu-sidebar">
       <div>
-        
-        <nz-typography class="sidebar-logo" nzTitle><span nz-icon nzType="pay-circle" nzTheme="outline"></span>{{ title }}</nz-typography>
+        <nz-typography class="sidebar-logo" nzTitle>
+          <span nz-icon nzType="pay-circle" nzTheme="outline"></span>{{ title }}
+        </nz-typography>
       </div>
       <ul nz-menu nzMode="inline" nzTheme="dark">
         <li nz-menu-item routerLink="/income" nz-routerLinkActive="active-link">收入管理</li>
@@ -14,7 +15,9 @@
     </nz-sider>
     <nz-layout>
       <nz-content>
-        <router-outlet></router-outlet>
+        <nz-card>
+          <router-outlet></router-outlet>
+        </nz-card>
       </nz-content>
     </nz-layout>
   </nz-layout>

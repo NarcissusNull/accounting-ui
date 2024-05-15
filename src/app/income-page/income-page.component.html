@@ -52,7 +52,7 @@
   </div>
 </div>
 
-<nz-table #dynamicTable [nzData]="dataSource" [nzBordered]="true">
+<nz-table #dynamicTable [nzData]="dataSource" [nzBordered]="true" [nzPageSize]="2" [nzShowPagination]="true">
   <thead>
     <tr>
       <th *ngFor="let column of columns">{{ column.title }}</th>
@@ -71,6 +71,4 @@
     </tr>
   </tbody>
 </nz-table>
-
-<nz-pagination [nzPageSizeOptions]="[5, 10, 20]" nzShowSizeChanger nzShowQuickJumper></nz-pagination>
 

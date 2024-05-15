@@ -8,6 +8,7 @@ import { NzBreadCrumbModule } from 'ng-zorro-antd/breadcrumb';
 import { RouterModule } from '@angular/router';
 import { NzTypographyModule } from 'ng-zorro-antd/typography';
 import { NzAvatarModule } from 'ng-zorro-antd/avatar';
+import { NzCardModule } from 'ng-zorro-antd/card';
 
 @Component({
   selector: 'app-root',
@@ -16,7 +17,8 @@ import { NzAvatarModule } from 'ng-zorro-antd/avatar';
     NzBreadCrumbModule,
     RouterModule,
     NzTypographyModule,
-    NzAvatarModule
+    NzAvatarModule,
+    NzCardModule
   ],
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
