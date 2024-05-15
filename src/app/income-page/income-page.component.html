@@ -62,7 +62,7 @@
     <tr *ngFor="let data of dataSource">
       <td *ngFor="let column of columns">
         <ng-container *ngIf="isDate(data[column.key]); else defaultContent">
-          {{ data[column.key] | date: 'yyyy年MM月dd日' }}
+          {{ data[column.key] | date: 'yyyy-MM-dd' }}
         </ng-container>
         <ng-template #defaultContent>
           {{ data[column.key] }}
