@@ -1,22 +1,2 @@
 <app-filter-item [filterItems]="filterItems"></app-filter-item>
-
-<nz-table #dynamicTable [nzData]="dataSource" [nzBordered]="true" [nzPageSize]="10" [nzShowPagination]="true"
-  [nzScroll]="{ x: '100%' }">
-  <thead>
-    <tr>
-      <th *ngFor="let column of columns">{{ column.title }}</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr *ngFor="let data of dataSource">
-      <td *ngFor="let column of columns">
-        <ng-container [ngSwitch]="column.format">
-          <span *ngSwitchCase="'text'">{{ data[column.key] }}</span>
-          <span *ngSwitchCase="'currency'">{{ data[column.key] | currency:'￥ ' }}</span>
-          <span *ngSwitchCase="'date'">{{ data[column.key] | date:'yyyy-MM-dd' }}</span>
-          <span *ngSwitchCase="'percentage'">{{ data[column.key] | percent }}</span>
-        </ng-container>
-      </td>
-    </tr>
-  </tbody>
-</nz-table>
+<app-table [dataSource]="dataSource" [columns]="columns"></app-table>

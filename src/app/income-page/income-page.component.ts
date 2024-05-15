@@ -14,6 +14,7 @@ import { NgSelectModule } from '@ng-select/ng-select';
 import { NzSelectModule } from 'ng-zorro-antd/select';
 import { SharedModule } from '../../shared/shared.module';
 import { FilterItem } from '../../shared/filter-item/filter-item.component';
+import { TableColumn } from '../../shared/tbale/tbale.component';
 
 
 @Component({
@@ -41,7 +42,7 @@ import { FilterItem } from '../../shared/filter-item/filter-item.component';
   schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
 export class IncomePageComponent implements OnInit {
-  columns = [
+  columns: TableColumn[] = [
     { title: '项目名称', key: 'projectName', format: 'text' },
     { title: '签署单位', key: 'signUnit', format: 'text' },
     { title: '费用分项', key: 'costItem', format: 'text' },

@@ -7,11 +7,13 @@ import { NzSelectModule } from 'ng-zorro-antd/select';
 import { NzDatePickerModule } from 'ng-zorro-antd/date-picker';
 
 import { FilterItemComponent } from './filter-item/filter-item.component';
-import { FilterItem } from './filter-item/filter-item.component';
+import { TbaleComponent } from './tbale/tbale.component';
+import { NzTableModule } from 'ng-zorro-antd/table';
 
 @NgModule({
   declarations: [
     FilterItemComponent,
+    TbaleComponent
   ],
   imports: [
     CommonModule,
@@ -20,10 +22,12 @@ import { FilterItem } from './filter-item/filter-item.component';
     NzFormModule,
     NzInputModule,
     NzSelectModule,
-    NzDatePickerModule
+    NzDatePickerModule,
+    NzTableModule
   ],
   exports: [
-    FilterItemComponent
+    FilterItemComponent,
+    TbaleComponent
   ]
 })
 export class SharedModule { }
