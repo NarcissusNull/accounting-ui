@@ -25,5 +25,18 @@ import { NzCardModule } from 'ng-zorro-antd/card';
 })
 export class AppComponent {
   title = '财会管理';
+  menuItems = [
+    { label: '收入', link: '/income' },
+    { label: '人力工资支出', link: '/salary-expense' },
+    { label: '运管费用', link: '/operation-expense' },
+    { label: '人员管理', link: '/personnel-management' },
+    { label: '管理费用', link: '/management-expense' },
+    { label: '往来资金', link: '/funds' },
+    { label: '人力工资扣款', link: '/salary-deduction' },
+    { label: '库存管理', link: '/inventory-management' },
+    { label: '固定资产', link: '/fixed-assets' },
+    { label: '项目', link: '/project' },
+    { label: '用户管理', link: '/user-management' }
+  ];
   isCollapsed = false;
 }
