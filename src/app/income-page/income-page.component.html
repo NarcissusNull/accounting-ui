@@ -61,15 +61,14 @@
   <tbody>
     <tr *ngFor="let data of dataSource">
       <td *ngFor="let column of columns">
-        <ng-container *ngIf="isDate(data[column.key]); else defaultContent">
-          {{ data[column.key] | date: 'yyyy-MM-dd' }}
+        <ng-container [ngSwitch]="column.format">
+          <span *ngSwitchCase="'text'">{{ data[column.key] }}</span>
+          <span *ngSwitchCase="'currency'">{{ data[column.key] | currency:'￥ ' }}</span>
+          <span *ngSwitchCase="'date'">{{ data[column.key] | date:'yyyy-MM-dd' }}</span>
+          <span *ngSwitchCase="'percentage'">{{ data[column.key] | percent }}</span>
         </ng-container>
-        <ng-template #defaultContent>
-          {{ data[column.key] }}
-        </ng-template>
       </td>
     </tr>
   </tbody>
 </nz-table>
-
 

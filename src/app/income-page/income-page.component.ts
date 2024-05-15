@@ -38,18 +38,18 @@ import { NzSelectModule } from 'ng-zorro-antd/select';
 })
 export class IncomePageComponent implements OnInit {
   columns = [
-    { title: '项目名称', key: 'projectName' },
-    { title: '签署单位', key: 'signUnit' },
-    { title: '费用分项', key: 'costItem' },
-    { title: '月份', key: 'month' },
-    { title: '开票金额', key: 'invoiceAmount' },
-    { title: '已收服务费', key: 'receivedFee' },
-    { title: '支付时间', key: 'paymentTime' },
-    { title: '合同期限', key: 'contractDuration' },
-    { title: '撤项目时间', key: 'withdrawTime' },
-    { title: '状态', key: 'status' },
-    { title: '税金比例', key: 'taxRate' },
-    { title: '税金备注', key: 'taxNote' }
+    { title: '项目名称', key: 'projectName', format: 'text' },
+    { title: '签署单位', key: 'signUnit', format: 'text' },
+    { title: '费用分项', key: 'costItem', format: 'text' },
+    { title: '月份', key: 'month', format: 'text' },
+    { title: '开票金额', key: 'invoiceAmount', format: 'currency' },
+    { title: '已收服务费', key: 'receivedFee', format: 'currency' },
+    { title: '支付时间', key: 'paymentTime', format: 'date' },
+    { title: '合同期限', key: 'contractDuration', format: 'text' },
+    { title: '撤项目时间', key: 'withdrawTime', format: 'date' },
+    { title: '状态', key: 'status', format: 'text' },
+    { title: '税金比例', key: 'taxRate', format: 'percentage' },
+    { title: '税金备注', key: 'taxNote', format: 'text' }
   ];
   dataSource: IncomeRecord[] = [];
 
