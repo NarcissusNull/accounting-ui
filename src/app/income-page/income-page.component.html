@@ -1,122 +1,76 @@
-<!-- <div class="container"> -->
-    <!-- <mat-card class="filter-card"> -->
-        <!-- <mat-card-title>搜索筛选</mat-card-title> -->
-        <!-- <mat-card-content> -->
-            <form>
-                <mat-form-field appearance="fill">
-                    <mat-label>项目名称</mat-label>
-                    <input matInput (keyup)="applyFilter('')" placeholder="搜索项目名称">
-                </mat-form-field>
+<div nz-row nzGutter="16">
+  <div nz-col nzSpan="12">
+    <nz-form-item>
+      <nz-form-label [nzSpan]="6">支付时间范围</nz-form-label>
+      <nz-form-control [nzSpan]="18">
+        <nz-range-picker [formControl]="paymentDateRange"></nz-range-picker>
+      </nz-form-control>
+    </nz-form-item>
+  </div>
+  <div nz-col nzSpan="12">
+    <nz-form-item>
+      <nz-form-label [nzSpan]="6">合同期限</nz-form-label>
+      <nz-form-control [nzSpan]="18">
+        <nz-date-picker [formControl]="contractDate"></nz-date-picker>
+      </nz-form-control>
+    </nz-form-item>
+  </div>
+</div>
 
-                <mat-form-field appearance="fill">
-                    <mat-label>费用分项</mat-label>
-                    <input matInput (keyup)="applyFilter('')" placeholder="搜索费用分项">
-                </mat-form-field>
+<div nz-row nzGutter="16">
+  <div nz-col nzSpan="12">
+    <nz-form-item>
+      <nz-form-label [nzSpan]="6">搜索项目</nz-form-label>
+      <nz-form-control [nzSpan]="18">
+        <input nz-input (input)="applyFilter($event)" placeholder="输入项目名称">
+      </nz-form-control>
+    </nz-form-item>
+  </div>
+  <div nz-col nzSpan="12">
+    <nz-form-item>
+      <nz-form-label [nzSpan]="6">费用分项</nz-form-label>
+      <nz-form-control [nzSpan]="18">
+        <nz-select [formControl]="expenseItem">
+          <nz-option *ngFor="let item of expenseItems" [nzValue]="item" [nzLabel]="item"></nz-option>
+        </nz-select>
+      </nz-form-control>
+    </nz-form-item>
+  </div>
+</div>
 
-                <mat-form-field appearance="fill">
-                    <mat-label>支付时间范围</mat-label>
-                    <mat-date-range-input [rangePicker]="picker">
-                        <input matStartDate placeholder="开始日期" [matDatepicker]="picker" >
-                        <input matEndDate placeholder="结束日期" [matDatepicker]="picker" >
-                    </mat-date-range-input>
-                    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-                    <mat-date-range-picker #picker></mat-date-range-picker>
-                </mat-form-field>
+<div nz-row nzGutter="16">
+  <div nz-col nzSpan="12">
+    <nz-form-item>
+      <nz-form-label [nzSpan]="6">状态</nz-form-label>
+      <nz-form-control [nzSpan]="18">
+        <nz-select [formControl]="status">
+          <nz-option nzValue="active" nzLabel="在施"></nz-option>
+          <nz-option nzValue="inactive" nzLabel="结束"></nz-option>
+        </nz-select>
+      </nz-form-control>
+    </nz-form-item>
+  </div>
+</div>
 
-                <mat-form-field appearance="fill">
-                    <mat-label>合同期限</mat-label>
-                    <input matInput (keyup)="applyFilter('')" placeholder="搜索合同期限">
-                </mat-form-field>
+<nz-table #dynamicTable [nzData]="dataSource" [nzBordered]="true">
+  <thead>
+    <tr>
+      <th *ngFor="let column of columns">{{ column.title }}</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let data of dataSource">
+      <td *ngFor="let column of columns">
+        <ng-container *ngIf="isDate(data[column.key]); else defaultContent">
+          {{ data[column.key] | date: 'yyyy年MM月dd日' }}
+        </ng-container>
+        <ng-template #defaultContent>
+          {{ data[column.key] }}
+        </ng-template>
+      </td>
+    </tr>
+  </tbody>
+</nz-table>
 
-                <mat-form-field appearance="fill">
-                    <mat-label>状态</mat-label>
-                    <input matInput (keyup)="applyFilter('')" placeholder="搜索状态">
-                </mat-form-field>
-            </form>
-        <!-- </mat-card-content> -->
-    <!-- </mat-card> -->
+<nz-pagination [nzPageSizeOptions]="[5, 10, 20]" nzShowSizeChanger nzShowQuickJumper></nz-pagination>
 
-    <!-- <mat-card class="list-card"> -->
-        <!-- <mat-card-content> -->
-            <mat-table [dataSource]="dataSource" class="mat-elevation-z8">
-
-                <!-- 列定义，为每个字段添加一个列 -->
-                <ng-container matColumnDef="projectName">
-                    <mat-header-cell *matHeaderCellDef> 项目名称 </mat-header-cell>
-                    <mat-cell *matCellDef="let element"> {{element.projectName}} </mat-cell>
-                </ng-container>
-
-                <!-- 签署单位 -->
-                <ng-container matColumnDef="signUnit">
-                    <mat-header-cell *matHeaderCellDef> 签署单位 </mat-header-cell>
-                    <mat-cell *matCellDef="let element"> {{element.signUnit}} </mat-cell>
-                </ng-container>
-
-                <!-- 费用分项 -->
-                <ng-container matColumnDef="costItem">
-                    <mat-header-cell *matHeaderCellDef> 费用分项 </mat-header-cell>
-                    <mat-cell *matCellDef="let element"> {{element.costItem}} </mat-cell>
-                </ng-container>
-
-                <!-- 月份 -->
-                <ng-container matColumnDef="month">
-                    <mat-header-cell *matHeaderCellDef> 月份 </mat-header-cell>
-                    <mat-cell *matCellDef="let element"> {{element.month}} </mat-cell>
-                </ng-container>
-
-                <!-- 开票金额 -->
-                <ng-container matColumnDef="invoiceAmount">
-                    <mat-header-cell *matHeaderCellDef> 开票金额 </mat-header-cell>
-                    <mat-cell *matCellDef="let element"> {{element.invoiceAmount | currency:'CNY'}} </mat-cell>
-                </ng-container>
-
-                <!-- 已收服务费 -->
-                <ng-container matColumnDef="receivedFee">
-                    <mat-header-cell *matHeaderCellDef> 已收服务费 </mat-header-cell>
-                    <mat-cell *matCellDef="let element"> {{element.receivedFee | currency:'CNY'}} </mat-cell>
-                </ng-container>
-
-                <!-- 支付时间 -->
-                <ng-container matColumnDef="paymentTime">
-                    <mat-header-cell *matHeaderCellDef> 支付时间 </mat-header-cell>
-                    <mat-cell *matCellDef="let element"> {{element.paymentTime | date:'yyyy-MM-dd'}} </mat-cell>
-                </ng-container>
-
-                <!-- 合同期限 -->
-                <ng-container matColumnDef="contractDuration">
-                    <mat-header-cell *matHeaderCellDef> 合同期限 </mat-header-cell>
-                    <mat-cell *matCellDef="let element"> {{element.contractDuration}} </mat-cell>
-                </ng-container>
-
-                <!-- 撤项目时间 -->
-                <ng-container matColumnDef="withdrawTime">
-                    <mat-header-cell *matHeaderCellDef> 撤项目时间 </mat-header-cell>
-                    <mat-cell *matCellDef="let element"> {{element.withdrawTime | date:'yyyy-MM-dd'}} </mat-cell>
-                </ng-container>
-
-                <!-- 状态 -->
-                <ng-container matColumnDef="status">
-                    <mat-header-cell *matHeaderCellDef> 状态 </mat-header-cell>
-                    <mat-cell *matCellDef="let element"> {{element.status}} </mat-cell>
-                </ng-container>
-
-                <!-- 税金比例 -->
-                <ng-container matColumnDef="taxRate">
-                    <mat-header-cell *matHeaderCellDef> 税金比例 </mat-header-cell>
-                    <mat-cell *matCellDef="let element"> {{element.taxRate}}% </mat-cell>
-                </ng-container>
-
-                <!-- 税金备注 -->
-                <ng-container matColumnDef="taxNote">
-                    <mat-header-cell *matHeaderCellDef> 税金备注 </mat-header-cell>
-                    <mat-cell *matCellDef="let element"> {{element.taxNote}} </mat-cell>
-                </ng-container>
-
-                <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
-                <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
-            </mat-table>
-        <!-- </mat-card-content> -->
-    <!-- </mat-card> -->
-<!-- </div> -->
-
-<mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>

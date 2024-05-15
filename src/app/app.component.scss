@@ -1,26 +1,75 @@
-.sidenav-container {
-    height: 100%;
+:host {
+  display: flex;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
-.mat-toolbar {
-    display: flex;
-    justify-content: space-between;
+.app-layout {
+  height: 100vh;
 }
 
-.example-spacer {
-    flex: 1 1 auto;
+.menu-sidebar {
+  position: relative;
+  z-index: 10;
+  min-height: 100vh;
+  box-shadow: 2px 0 6px rgba(0, 21, 41, .35);
+  background-color: #001529; /* 修改侧边栏背景色 */
 }
 
-.active-link {
-    color: #f00; // 举例：红色字体
-    background-color: #ccc; // 举例：灰色背景
+.trigger:hover {
+  color: #1890ff;
 }
 
-.custom-sidenav {
-  margin-top: 6px; /* 调整顶部间隔 */
-  padding: 0 6px; /* 在侧边栏的左右两侧添加10px的内部填充 */
+.sidebar-logo {
+  display: flex;
+  align-items: center;
+  justify-content: center; /* 居中对齐 */
+  height: 70px; /* 增加高度以突出显示 */
+  background: rgba(255, 255, 255, 0.2);
+  color: #fff; /* 修改文字颜色 */
+  transition: all .3s;
 }
 
-.mat-nav-list {
-  margin-top: 10px; /* 菜单项之间的间隔 */
+.sidebar-logo span[nz-icon] {
+  margin-right: 8px;
+  color: #fff;
+}
+
+.sidebar-logo h1 {
+  margin: 0;
+  color: #fff;
+  font-weight: 600;
+  font-size: 18px; /* 增加字体大小 */
+  font-family: Avenir, Helvetica Neue, Arial, Helvetica, sans-serif;
+}
+
+nz-header {
+  padding: 0;
+  width: 100%;
+  z-index: 2;
+}
+
+.app-header {
+  position: relative;
+  height: 64px;
+  padding: 0;
+  background: #fff;
+  box-shadow: 0 1px 4px rgba(0, 21, 41, .08);
+}
+
+nz-content {
+  margin: 24px;
+}
+
+.inner-content {
+  padding: 24px;
+  background: #fff;
+  height: 100%;
+}
+
+.logo {
+  height: 32px;
+  background: rgba(255, 255, 255, 0.2);
+  margin: 16px;
 }

@@ -1,18 +1,21 @@
-<mat-toolbar color="primary">
-  <span>{{title}}</span>
-  <span class="example-spacer"></span>
-  <span>{{username}}</span>
-</mat-toolbar>
-<mat-sidenav-container class="sidenav-container">
-  <mat-sidenav #sidenav mode="side" opened="true" class="custom-sidenav">
-    <mat-nav-list>
-      <!-- <a mat-list-item routerLink="/project" routerLinkActive="active-link">项目管理</a> -->
-      <!-- <a mat-list-item routerLink="/cost" routerLinkActive="active-link">费用管理</a> -->
-      <a mat-list-item routerLink="/income" routerLinkActive="active-link">收入管理</a>
-      <!-- 更多菜单项 -->
-    </mat-nav-list>
-  </mat-sidenav>
-  <mat-sidenav-content>
-    <router-outlet></router-outlet>
-  </mat-sidenav-content>
-</mat-sidenav-container>
+<nz-layout class="layout" style="height: 100%;">
+  <nz-layout>
+    <nz-sider nzWidth="200" [nzCollapsed]="false" class="menu-sidebar">
+      <div>
+        
+        <nz-typography class="sidebar-logo" nzTitle><span nz-icon nzType="pay-circle" nzTheme="outline"></span>{{ title }}</nz-typography>
+      </div>
+      <ul nz-menu nzMode="inline" nzTheme="dark">
+        <li nz-menu-item routerLink="/income" nz-routerLinkActive="active-link">收入管理</li>
+        <li nz-menu-item routerLink="/project" nz-routerLinkActive="active-link">项目管理</li>
+        <li nz-menu-item routerLink="/cost" nz-routerLinkActive="active-link">成本管理</li>
+        <!-- 更多菜单项 -->
+      </ul>
+    </nz-sider>
+    <nz-layout>
+      <nz-content>
+        <router-outlet></router-outlet>
+      </nz-content>
+    </nz-layout>
+  </nz-layout>
+</nz-layout>

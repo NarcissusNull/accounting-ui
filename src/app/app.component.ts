@@ -1,31 +1,27 @@
 import { Component } from '@angular/core';
-import { RouterModule, RouterOutlet } from '@angular/router';
-import { MatSidenavModule } from '@angular/material/sidenav'
-import { MatListModule } from '@angular/material/list';
-import { MatToolbarModule } from '@angular/material/toolbar';
-import { MatFormFieldModule } from '@angular/material/form-field';
-import { MatTableModule } from '@angular/material/table';
-import { MatPaginatorModule } from '@angular/material/paginator';
-
-
+import { CommonModule } from '@angular/common';
+import { RouterOutlet } from '@angular/router';
+import { NzIconModule } from 'ng-zorro-antd/icon';
+import { NzLayoutModule } from 'ng-zorro-antd/layout';
+import { NzMenuModule } from 'ng-zorro-antd/menu';
+import { NzBreadCrumbModule } from 'ng-zorro-antd/breadcrumb';
+import { RouterModule } from '@angular/router';
+import { NzTypographyModule } from 'ng-zorro-antd/typography';
+import { NzAvatarModule } from 'ng-zorro-antd/avatar';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [
-    RouterOutlet,
-    MatSidenavModule,
-    MatListModule,
-    MatToolbarModule,
+  imports: [CommonModule, RouterOutlet, NzIconModule, NzLayoutModule, NzMenuModule,
+    NzBreadCrumbModule,
     RouterModule,
-    MatFormFieldModule,
-    MatTableModule,
-    MatPaginatorModule
+    NzTypographyModule,
+    NzAvatarModule
   ],
   templateUrl: './app.component.html',
-  styleUrl: './app.component.scss'
+  styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = '财会管理系统';
-  username = "冯春华"
+  title = '财会管理';
+  isCollapsed = false;
 }
