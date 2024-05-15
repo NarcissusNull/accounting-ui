@@ -32,10 +32,10 @@ export class AppComponent {
     { label: '运管费用', link: '/operation-expense' },
     { label: '管理费用', link: '/management-expense' },
     { label: '固定资产', link: '/fixed-assets' },
+    { label: '人员管理', link: '/personnel-management' },
     { label: '往来资金', link: '/funds' },
     { label: '库存管理', link: '/inventory-management' },
     { label: '项目', link: '/project' },
-    { label: '人员管理', link: '/personnel-management' },
     { label: '用户管理', link: '/user-management' }
   ];
   isCollapsed = false;
