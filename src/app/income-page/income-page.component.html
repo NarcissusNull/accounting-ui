@@ -1,58 +1,7 @@
-<div nz-row nzGutter="16">
-  <div nz-col nzSpan="12">
-    <nz-form-item>
-      <nz-form-label [nzSpan]="6">支付时间范围</nz-form-label>
-      <nz-form-control [nzSpan]="18">
-        <nz-range-picker [formControl]="paymentDateRange"></nz-range-picker>
-      </nz-form-control>
-    </nz-form-item>
-  </div>
-  <div nz-col nzSpan="12">
-    <nz-form-item>
-      <nz-form-label [nzSpan]="6">合同期限</nz-form-label>
-      <nz-form-control [nzSpan]="18">
-        <nz-date-picker [formControl]="contractDate"></nz-date-picker>
-      </nz-form-control>
-    </nz-form-item>
-  </div>
-</div>
+<app-filter-item [filterItems]="filterItems"></app-filter-item>
 
-<div nz-row nzGutter="16">
-  <div nz-col nzSpan="12">
-    <nz-form-item>
-      <nz-form-label [nzSpan]="6">搜索项目</nz-form-label>
-      <nz-form-control [nzSpan]="18">
-        <input nz-input (input)="applyFilter($event)" placeholder="输入项目名称">
-      </nz-form-control>
-    </nz-form-item>
-  </div>
-  <div nz-col nzSpan="12">
-    <nz-form-item>
-      <nz-form-label [nzSpan]="6">费用分项</nz-form-label>
-      <nz-form-control [nzSpan]="18">
-        <nz-select [formControl]="expenseItem">
-          <nz-option *ngFor="let item of expenseItems" [nzValue]="item" [nzLabel]="item"></nz-option>
-        </nz-select>
-      </nz-form-control>
-    </nz-form-item>
-  </div>
-</div>
-
-<div nz-row nzGutter="16">
-  <div nz-col nzSpan="12">
-    <nz-form-item>
-      <nz-form-label [nzSpan]="6">状态</nz-form-label>
-      <nz-form-control [nzSpan]="18">
-        <nz-select [formControl]="status">
-          <nz-option nzValue="active" nzLabel="在施"></nz-option>
-          <nz-option nzValue="inactive" nzLabel="结束"></nz-option>
-        </nz-select>
-      </nz-form-control>
-    </nz-form-item>
-  </div>
-</div>
-
-<nz-table #dynamicTable [nzData]="dataSource" [nzBordered]="true" [nzPageSize]="10" [nzShowPagination]="true" [nzScroll]="{ x: '100%' }">
+<nz-table #dynamicTable [nzData]="dataSource" [nzBordered]="true" [nzPageSize]="10" [nzShowPagination]="true"
+  [nzScroll]="{ x: '100%' }">
   <thead>
     <tr>
       <th *ngFor="let column of columns">{{ column.title }}</th>
@@ -71,4 +20,3 @@
     </tr>
   </tbody>
 </nz-table>
-

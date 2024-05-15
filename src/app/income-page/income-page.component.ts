@@ -12,6 +12,9 @@ import { NzGridModule } from 'ng-zorro-antd/grid';
 import { CommonModule } from '@angular/common';
 import { NgSelectModule } from '@ng-select/ng-select';
 import { NzSelectModule } from 'ng-zorro-antd/select';
+import { SharedModule } from '../../shared/shared.module';
+import { FilterItem } from '../../shared/filter-item/filter-item.component';
+
 
 @Component({
   selector: 'app-income-page',
@@ -29,7 +32,8 @@ import { NzSelectModule } from 'ng-zorro-antd/select';
     FormsModule,
     ReactiveFormsModule,
     NgSelectModule,
-    NzSelectModule
+    NzSelectModule,
+    SharedModule
   ],
   providers: [
 
@@ -61,7 +65,26 @@ export class IncomePageComponent implements OnInit {
   contractDate = new FormControl();
   expenseItem = new FormControl();
   status = new FormControl();
-  expenseItems = ['服务费', '押金', '违约金', '餐费', '外勤费', '个人借款', '转存'];
+  expenseItems = [
+    { value: '服务费', label: '服务费' },
+    { value: '押金', label: '押金' },
+    { value: '违约金', label: '违约金' },
+    { value: '餐费', label: '餐费' },
+    { value: '外勤费', label: '外勤费' },
+    { value: '个人借款', label: '个人借款' },
+    { value: '转存', label: '转存' }
+  ];
+
+  filterItems: FilterItem[] = [
+    { label: '支付时间', key: 'paymentDateRange', type: 'rangePicker', formControl: this.fb.control([]) },
+    { label: '合同期限', key: 'contractDate', type: 'datePicker', formControl: this.fb.control(null) },
+    { label: '搜索项目', key: 'projectName', type: 'input', formControl: this.fb.control('') },
+    { label: '费用分项', key: 'expenseItem', type: 'select', formControl: this.fb.control(null), options: this.expenseItems },
+    { label: '状态', key: 'status', type: 'select', formControl: this.fb.control(null), options: [
+      { value: 'active', label: '在施' },
+      { value: 'inactive', label: '结束' }
+    ]}
+  ];
 
   constructor(private fb: FormBuilder) { }
 
