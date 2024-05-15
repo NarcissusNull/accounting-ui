@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { IncomeService } from '../../service/income.service';
-import { SharedModule } from '../../shared/shared.module';
-import { FilterItem } from '../../shared/filter-item/filter-item.component';
+import { IncomeService } from '../../../service/income.service';
+import { SharedModule } from '../../../shared/shared.module';
+import { FilterItem } from '../../../shared/filter-item/filter-item.component';
 import { FormBuilder } from '@angular/forms';
-import { TableColumn } from '../../shared/tbale/tbale.component';
+import { TableColumn } from '../../../shared/tbale/tbale.component';
 
 @Component({
   selector: 'app-income-page',
