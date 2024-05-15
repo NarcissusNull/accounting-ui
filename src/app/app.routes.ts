@@ -1,6 +1,5 @@
 import { Routes } from '@angular/router';
 import { ProjectPageComponent } from './pages/project-page/project-page.component';
-import { CostPageComponent } from './cost-page/cost-page.component';
 import { IncomePageComponent } from './pages/income-page/income-page.component';
 import { SalaryExpensePageComponent } from './pages/salary-expense-page/salary-expense-page.component';
 import { OperationExpensePageComponent } from './pages/operation-expense-page/operation-expense-page.component';

@@ -7,7 +7,7 @@
   </thead>
   <tbody>
     <tr *ngFor="let data of dataSource">
-      <td *ngFor="let column of columns">
+      <td *ngFor="let column of columns" class="ellipsis">
         <ng-container [ngSwitch]="column.format">
           <span *ngSwitchCase="'text'">{{ data[column.key] }}</span>
           <span *ngSwitchCase="'currency'">{{ data[column.key] | currency:'￥ ' }}</span>
