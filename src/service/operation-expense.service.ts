@@ -30,7 +30,6 @@ export class OperationExpenseService {
         paymentMethod: '招商',
         transferNote: '无',
         reason: '项目A伙食费',
-        idNumber: '123456789012345678' // 新增字段
       },
       {
         projectName: '项目B',
@@ -41,7 +40,6 @@ export class OperationExpenseService {
         paymentMethod: '微信红包',
         transferNote: '无',
         reason: '项目B交通费',
-        idNumber: '234567890123456789' // 新增字段
       },
       {
         projectName: '项目C',
@@ -52,7 +50,6 @@ export class OperationExpenseService {
         paymentMethod: '支付宝',
         transferNote: '无',
         reason: '项目C电费',
-        idNumber: '345678901234567890' // 新增字段
       },
       {
         projectName: '项目D',
@@ -74,7 +71,6 @@ export class OperationExpenseService {
         paymentMethod: '微信红包',
         transferNote: '无',
         reason: '项目E房租',
-        idNumber: '567890123456789012' // 新增字段
       }
     ];
   }
@@ -89,7 +85,6 @@ export interface OperationExpenseRecord {
   paymentMethod: string;
   transferNote: string;
   reason: string;
-  idNumber: string; // 新增字段
   [key: string]: any;
 }
 

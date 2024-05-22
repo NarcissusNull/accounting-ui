@@ -22,9 +22,9 @@ export class SalaryExpenseService {
   fetchDefaultData(): SalaryExpenseRecord[] {
     return [
       {
-        declarationTime: new Date('2023-05-01'),
         personInCharge: '张三',
         name: '李四',
+        idNumber: '123456789012345678',
         projectName: '项目A',
         month: '2023-05',
         socialInsurance: 500,
@@ -42,9 +42,9 @@ export class SalaryExpenseService {
         note: '无'
       },
       {
-        declarationTime: new Date('2023-04-01'),
         personInCharge: '王五',
         name: '赵六',
+        idNumber: '123456789012345678',
         projectName: '项目B',
         month: '2023-04',
         socialInsurance: 600,
@@ -66,7 +66,6 @@ export class SalaryExpenseService {
 }
 
 export interface SalaryExpenseRecord {
-  declarationTime: Date;
   personInCharge: string;
   name: string;
   projectName: string;

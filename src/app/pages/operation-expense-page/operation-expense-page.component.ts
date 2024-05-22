@@ -31,7 +31,6 @@ export class OperationExpensePageComponent implements OnInit {
     { title: '支出途径', key: 'paymentMethod', format: 'text' },
     { title: '转账备注', key: 'transferNote', format: 'text' },
     { title: '事由', key: 'reason', format: 'text' },
-    { title: '身份证号', key: 'idNumber', format: 'text' } // 新增字段
   ];
 
   expenseItems = [
@@ -79,7 +78,6 @@ export class OperationExpensePageComponent implements OnInit {
     { label: '支出途径', key: 'paymentMethod', type: 'select', formControl: this.fb.control(null), options: this.paymentMethods },
     { label: '转账备注', key: 'transferNote', type: 'input', formControl: this.fb.control('') },
     { label: '事由', key: 'reason', type: 'input', formControl: this.fb.control('') },
-    { label: '身份证号', key: 'idNumber', type: 'input', formControl: this.fb.control('') } // 新增筛选项
   ];
 }
 

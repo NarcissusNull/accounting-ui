@@ -27,9 +27,9 @@ export class SalaryExpensePageComponent implements OnInit {
 
   dataSource: SalaryExpenseRecord[] = [];
   columns: TableColumn[] = [
-    { title: '申报时间', key: 'declarationTime', format: 'date' },
     { title: '负责人', key: 'personInCharge', format: 'text' },
     { title: '姓名', key: 'name', format: 'text' },
+    { title: '身份证号', key: 'idNumber', format: 'text' }, // 新增字段
     { title: '项目名称', key: 'projectName', format: 'text' },
     { title: '月份', key: 'month', format: 'text' },
     { title: '社会保险', key: 'socialInsurance', format: 'currency' },
@@ -48,8 +48,9 @@ export class SalaryExpensePageComponent implements OnInit {
   ];
 
   filterItems: FilterItem[] = [
-    { label: '申报时间', key: 'declarationTime', type: 'datePicker', formControl: this.fb.control(null) },
     { label: '负责人', key: 'personInCharge', type: 'input', formControl: this.fb.control('') },
+    { label: '姓名', key: 'name', type: 'input', formControl: this.fb.control('') },
+    { label: '身份证号', key: 'idNumber', type: 'input', formControl: this.fb.control('') },
     { label: '项目名称', key: 'projectName', type: 'input', formControl: this.fb.control('') },
     { label: '月份', key: 'month', type: 'input', formControl: this.fb.control('') },
     { label: '发放单位', key: 'issuingUnit', type: 'input', formControl: this.fb.control('') },

@@ -28,7 +28,7 @@ export class IncomePageComponent implements OnInit {
   columns: TableColumn[] = [
     { title: '项目名称', key: 'projectName', format: 'text' },
     { title: '签署单位', key: 'signUnit', format: 'text' },
-    { title: '费用分项', key: 'costItem', format: 'text' },
+    { title: '收入分项', key: 'costItem', format: 'text' },
     { title: '月份', key: 'month', format: 'text' },
     { title: '开票金额', key: 'invoiceAmount', format: 'currency' },
     { title: '已收服务费', key: 'receivedFee', format: 'currency' },
@@ -54,7 +54,8 @@ export class IncomePageComponent implements OnInit {
     { label: '支付时间', key: 'paymentDateRange', type: 'rangePicker', formControl: this.fb.control([]) },
     { label: '合同期限', key: 'contractDate', type: 'datePicker', formControl: this.fb.control(null) },
     { label: '搜索项目', key: 'projectName', type: 'input', formControl: this.fb.control('') },
-    { label: '费用分项', key: 'expenseItem', type: 'select', formControl: this.fb.control(null), options: this.expenseItems },
+    { label: '签署单位', key: 'signUnit', type: 'input', formControl: this.fb.control('') },
+    { label: '收入分项', key: 'expenseItem', type: 'select', formControl: this.fb.control(null), options: this.expenseItems },
     {
       label: '状态', key: 'status', type: 'select', formControl: this.fb.control(null), options: [
         { value: 'active', label: '在施' },
