@@ -25,18 +25,28 @@ import { NzCardModule } from 'ng-zorro-antd/card';
 })
 export class AppComponent {
   title = '财会管理';
-  menuItems = [
-    { label: '收入', link: '/income' },
-    { label: '人力工资支出', link: '/salary-expense' },
-    { label: '人力工资扣款', link: '/salary-deduction' },
-    { label: '运管费用', link: '/operation-expense' },
-    { label: '管理费用', link: '/management-expense' },
-    { label: '固定资产', link: '/fixed-assets' },
-    { label: '人员管理', link: '/personnel-management' },
-    { label: '往来资金', link: '/funds' },
-    { label: '库存管理', link: '/inventory-management' },
-    { label: '项目', link: '/project' },
-    { label: '用户管理', link: '/user-management' }
-  ];
   isCollapsed = false;
+  menuItems = [
+    {
+      label: '信息管理',
+      icon: 'appstore',
+      children: [
+        { label: '项目管理', link: '/project-management' },
+        { label: '人员管理', link: '/personnel-management' },
+        { label: '库存管理', link: '/inventory-management' },
+        { label: '工资管理', link: '/salary-management' }
+      ]
+    },
+    {
+      label: '财务记账',
+      icon: 'account-book',
+      children: [
+        { label: '记账录入', link: '/accounting-entry' },
+        { label: '流水明细', link: '/transaction-details' },
+        { label: '报表', link: '/reports' },
+        { label: '资金账户', link: '/fund-account' }  // 新增的菜单项
+      ]
+    }
+  ];
 }
+

@@ -1,20 +1,30 @@
 <nz-layout class="layout" style="height: 100%;">
   <nz-layout>
-    <nz-sider nzWidth="200" [nzCollapsed]="false" class="menu-sidebar">
+    <nz-sider nzWidth="200" [nzCollapsed]="isCollapsed" class="menu-sidebar">
       <div>
         <nz-typography class="sidebar-logo" nzTitle>
           <span nz-icon nzType="home" nzTheme="outline"></span>{{ title }}
         </nz-typography>
       </div>
       <ul nz-menu nzMode="inline" nzTheme="dark">
-        <li *ngFor="let menuItem of menuItems" nz-menu-item [routerLink]="menuItem.link" nz-routerLinkActive="active-link">
-          {{ menuItem.label }}
-        </li>
+        <ng-container *ngFor="let menuItem of menuItems">
+          <li *ngIf="menuItem.children" nz-submenu>
+            <span title>
+              <span nz-icon [nzType]="menuItem.icon" nzTheme="outline"></span>
+              <span>{{ menuItem.label }}</span>
+            </span>
+            <ul>
+              <li *ngFor="let child of menuItem.children" nz-menu-item [routerLink]="child.link">
+                {{ child.label }}
+              </li>
+            </ul>
+          </li>
+        </ng-container>
       </ul>
     </nz-sider>
     <nz-layout>
       <nz-content>
-        <nz-card>
+        <nz-card style="height: 100%; overflow: auto;">
           <router-outlet></router-outlet>
         </nz-card>
       </nz-content>

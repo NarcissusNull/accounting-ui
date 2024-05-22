@@ -1,0 +1,66 @@
+<div class="accounting-entry-page">
+  <div class="form-container">
+    <form [formGroup]="incomeForm" (ngSubmit)="onSubmitIncome()">
+      <h2>收入录入</h2>
+      <div formArrayName="entries">
+        <div *ngFor="let entry of incomeEntries.controls; let i = index" [formGroupName]="i" class="entry-row">
+          <div nz-row nzGutter="15" nzJustify="start" nzAlign="top" nzType="flex" class="filter-container"
+            style="min-width: 300px;">
+            <div nz-col nzSpan="8" *ngFor="let item of incomeFields" class="field-container" style="min-width: 450px;">
+              <nz-form-item>
+                <nz-form-label [nzSpan]="8">{{ item.label }}</nz-form-label>
+                <nz-form-control [nzSpan]="12">
+                  <ng-container [ngSwitch]="item.type">
+                    <nz-range-picker *ngSwitchCase="'rangePicker'" [formControl]="item.formControl"></nz-range-picker>
+                    <nz-date-picker *ngSwitchCase="'datePicker'" [formControl]="item.formControl"></nz-date-picker>
+                    <input nz-input *ngSwitchCase="'input'" [formControl]="item.formControl"
+                      placeholder="输入{{ item.label }}">
+                    <nz-select *ngSwitchCase="'select'" [formControlName]="item.name">
+                        <nz-option *ngFor="let option of (item.options$ | async)" [nzValue]="option.id"
+                        [nzLabel]="option.name"></nz-option>
+                    </nz-select>
+                  </ng-container>
+                </nz-form-control>
+              </nz-form-item>
+            </div>
+          </div>
+          <button nz-button nzType="dashed" (click)="removeIncomeEntry(i)">删除</button>
+        </div>
+      </div>
+      <button nz-button nzType="dashed" (click)="addIncomeEntry()">添加收入条目</button>
+      <button nz-button nzType="primary" [disabled]="!incomeForm.valid">提交收入</button>
+    </form>
+  </div>
+  <div class="form-container">
+    <form [formGroup]="expenseForm" (ngSubmit)="onSubmitExpense()">
+      <h2>支出录入</h2>
+      <div formArrayName="entries">
+        <div *ngFor="let entry of expenseEntries.controls; let i = index" [formGroupName]="i" class="entry-row">
+          <div nz-row nzGutter="15" nzJustify="start" nzAlign="top" nzType="flex" class="filter-container"
+            style="min-width: 300px;">
+            <div nz-col nzSpan="8" *ngFor="let item of expenseFields" class="field-container" style="min-width: 450px;">
+              <nz-form-item>
+                <nz-form-label [nzSpan]="8">{{ item.label }}</nz-form-label>
+                <nz-form-control [nzSpan]="12">
+                  <ng-container [ngSwitch]="item.type">
+                    <nz-range-picker *ngSwitchCase="'rangePicker'" [formControl]="item.formControl"></nz-range-picker>
+                    <nz-date-picker *ngSwitchCase="'datePicker'" [formControl]="item.formControl"></nz-date-picker>
+                    <input nz-input *ngSwitchCase="'input'" [formControl]="item.formControl"
+                      placeholder="输入{{ item.label }}">
+                    <nz-select *ngSwitchCase="'select'" [formControlName]="item.name">
+                        <nz-option *ngFor="let option of (item.options$ | async)" [nzValue]="option.id"
+                        [nzLabel]="option.name"></nz-option>
+                    </nz-select>
+                  </ng-container>
+                </nz-form-control>
+              </nz-form-item>
+            </div>
+          </div>
+          <button nz-button nzType="dashed" (click)="removeExpenseEntry(i)">删除</button>
+        </div>
+      </div>
+      <button nz-button nzType="dashed" (click)="addExpenseEntry()">添加支出项</button>
+      <button nz-button nzType="primary" [disabled]="!expenseForm.valid">提交支出</button>
+    </form>
+  </div>
+</div>

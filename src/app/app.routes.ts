@@ -10,6 +10,7 @@ import { InventoryManagementPageComponent } from './pages/inventory-management-p
 import { FixedAssetsPageComponent } from './pages/fixed-assets-page/fixed-assets-page.component';
 import { UserManagementPageComponent } from './pages/user-management-page/user-management-page.component';
 import { PersonnelManagementPageComponent } from './pages/personnel-management-page/personnel-management-page.component';
+import { AccountingEntryPageComponent } from './pages/accounting-entry-page/accounting-entry-page.component';
 
 export const routes: Routes = [
     { path: 'project', component: ProjectPageComponent },
@@ -23,4 +24,5 @@ export const routes: Routes = [
     { path: 'inventory-management', component: InventoryManagementPageComponent },
     { path: 'fixed-assets', component: FixedAssetsPageComponent },
     { path: 'user-management', component: UserManagementPageComponent },
+    { path: 'accounting-entry', component: AccountingEntryPageComponent },
 ];
