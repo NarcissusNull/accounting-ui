@@ -31,7 +31,7 @@ export class AppComponent {
       label: '信息管理',
       icon: 'appstore',
       children: [
-        { label: '项目管理', link: '/project-management' },
+        { label: '项目管理', link: '/project' },
         { label: '人员管理', link: '/personnel-management' },
         { label: '库存管理', link: '/inventory-management' },
         { label: '工资管理', link: '/salary-management' }
