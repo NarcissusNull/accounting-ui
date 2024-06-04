@@ -56,4 +56,9 @@ export class ProjectPageComponent implements OnInit {
     { label: '税金备注', key: 'taxNote', type: 'input', formControl: this.fb.control('') },
     { label: '备注', key: 'note', type: 'input', formControl: this.fb.control('') }
   ];
+
+  handleFormSubmitted(formData: any) {
+    console.log('表单数据:', formData);
+    // 在这里处理接收到的表单数据
+  }
 }

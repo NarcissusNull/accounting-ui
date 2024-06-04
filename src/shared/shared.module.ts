@@ -9,6 +9,7 @@ import { NzDatePickerModule } from 'ng-zorro-antd/date-picker';
 import { FilterItemComponent } from './filter-item/filter-item.component';
 import { TbaleComponent } from './tbale/tbale.component';
 import { NzTableModule } from 'ng-zorro-antd/table';
+import { NzButtonModule } from 'ng-zorro-antd/button';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { NzTableModule } from 'ng-zorro-antd/table';
     NzInputModule,
     NzSelectModule,
     NzDatePickerModule,
-    NzTableModule
+    NzTableModule,
+    NzButtonModule
   ],
   exports: [
     FilterItemComponent,

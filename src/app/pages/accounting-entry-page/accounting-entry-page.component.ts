@@ -1,4 +1,4 @@
-import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, FormArray, Validators, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AccountingEntryService } from '../../../service/accounting-entry.service';
 import { CommonModule } from '@angular/common';
@@ -7,6 +7,7 @@ import { NzFormModule } from 'ng-zorro-antd/form';
 import { NzInputModule } from 'ng-zorro-antd/input';
 import { NzSelectModule } from 'ng-zorro-antd/select';
 import { Observable } from 'rxjs';
+import { NzCardModule } from 'ng-zorro-antd/card';
 
 @Component({
   selector: 'app-accounting-entry-page',
@@ -20,14 +21,13 @@ import { Observable } from 'rxjs';
     NzFormModule,
     NzInputModule,
     NzButtonModule,
-    NzSelectModule
+    NzSelectModule,
+    NzCardModule
   ]
 })
 export class AccountingEntryPageComponent implements OnInit {
   incomeForm!: FormGroup;
   expenseForm!: FormGroup;
-  incomeFields: any[] = [];
-  expenseFields: any[] = [];
   incomeCategories$: Observable<any[]>;
   expenseCategories$: Observable<any[]>;
   accounts$: Observable<any[]>;
@@ -42,15 +42,12 @@ export class AccountingEntryPageComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.incomeFields = this.getIncomeFields();
-    this.expenseFields = this.getExpenseFields();
-
     this.incomeForm = this.fb.group({
-      entries: this.fb.array([this.createDynamicForm(this.incomeFields)])
+      entries: this.fb.array([this.createIncomeForm()])
     });
 
     this.expenseForm = this.fb.group({
-      entries: this.fb.array([this.createDynamicForm(this.expenseFields)])
+      entries: this.fb.array([this.createExpenseForm()])
     });
 
     this.accountingEntryService.loadIncomeCategories();
@@ -58,38 +55,30 @@ export class AccountingEntryPageComponent implements OnInit {
     this.accountingEntryService.loadAccounts();
   }
 
-  getIncomeFields(): any[] {
-    return [
-      { name: 'projectName', label: '项目名称', required: true },
-      { name: 'incomeCategory', label: '收入类别', required: true, type: 'select', options$: this.incomeCategories$ },
-      { name: 'incomeItem', label: '收入分项', required: true, type: 'select', options: [] },
-      { name: 'incomeAmount', label: '收入金额', required: true },
-      { name: 'incomeAccount', label: '收入账户', required: true, type: 'select', options$: this.accounts$ },
-      { name: 'incomeDate', label: '收入时间', required: true },
-      { name: 'incomePayer', label: '收入付款方', required: true },
-      { name: 'incomeNote', label: '备注', required: false }
-    ];
-  }
-
-  getExpenseFields(): any[] {
-    return [
-      { name: 'projectName', label: '项目名称', required: true },
-      { name: 'expenseCategory', label: '支出类别', required: true, type: 'select', options$: this.expenseCategories$ },
-      { name: 'expenseItem', label: '支出分项', required: true, type: 'select', options: [] },
-      { name: 'expenseAmount', label: '支出金额', required: true },
-      { name: 'expenseAccount', label: '支出账户', required: true, type: 'select', options$: this.accounts$ },
-      { name: 'expenseDate', label: '支出时间', required: true },
-      { name: 'expensePayer', label: '支出付款方', required: true },
-      { name: 'expenseNote', label: '备注', required: false }
-    ];
-  }
-
-  createDynamicForm(fields: any[]): FormGroup {
-    const group: any = {};
-    fields.forEach(field => {
-      group[field.name] = ['', field.required ? Validators.required : null];
+  createIncomeForm(): FormGroup {
+    return this.fb.group({
+      projectName: ['', Validators.required],
+      incomeCategory: ['', Validators.required],
+      incomeItem: ['', Validators.required],
+      incomeAmount: ['', Validators.required],
+      incomeAccount: ['', Validators.required],
+      incomeDate: ['', Validators.required],
+      incomePayer: ['', Validators.required],
+      incomeNote: ['']
     });
-    return this.fb.group(group);
+  }
+
+  createExpenseForm(): FormGroup {
+    return this.fb.group({
+      projectName: ['', Validators.required],
+      expenseCategory: ['', Validators.required],
+      expenseItem: ['', Validators.required],
+      expenseAmount: ['', Validators.required],
+      expenseAccount: ['', Validators.required],
+      expenseDate: ['', Validators.required],
+      expensePayer: ['', Validators.required],
+      expenseNote: ['']
+    });
   }
 
   get incomeEntries(): FormArray {
@@ -101,7 +90,7 @@ export class AccountingEntryPageComponent implements OnInit {
   }
 
   addIncomeEntry(): void {
-    this.incomeEntries.push(this.createDynamicForm(this.incomeFields));
+    this.incomeEntries.push(this.createIncomeForm());
   }
 
   removeIncomeEntry(index: number): void {
@@ -109,7 +98,7 @@ export class AccountingEntryPageComponent implements OnInit {
   }
 
   addExpenseEntry(): void {
-    this.expenseEntries.push(this.createDynamicForm(this.expenseFields));
+    this.expenseEntries.push(this.createExpenseForm());
   }
 
   removeExpenseEntry(index: number): void {
@@ -131,5 +120,4 @@ export class AccountingEntryPageComponent implements OnInit {
       });
     }
   }
-  
 }
