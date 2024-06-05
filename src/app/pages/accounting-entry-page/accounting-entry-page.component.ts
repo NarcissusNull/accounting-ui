@@ -8,6 +8,7 @@ import { NzInputModule } from 'ng-zorro-antd/input';
 import { NzSelectModule } from 'ng-zorro-antd/select';
 import { Observable } from 'rxjs';
 import { NzCardModule } from 'ng-zorro-antd/card';
+import { NzDatePickerComponent, NzDatePickerModule } from 'ng-zorro-antd/date-picker';
 
 @Component({
   selector: 'app-accounting-entry-page',
@@ -22,7 +23,8 @@ import { NzCardModule } from 'ng-zorro-antd/card';
     NzInputModule,
     NzButtonModule,
     NzSelectModule,
-    NzCardModule
+    NzCardModule,
+    NzDatePickerModule
   ]
 })
 export class AccountingEntryPageComponent implements OnInit {
@@ -121,3 +123,4 @@ export class AccountingEntryPageComponent implements OnInit {
     }
   }
 }
+
