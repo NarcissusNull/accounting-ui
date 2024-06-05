@@ -11,6 +11,7 @@ import { FixedAssetsPageComponent } from './pages/fixed-assets-page/fixed-assets
 import { UserManagementPageComponent } from './pages/user-management-page/user-management-page.component';
 import { PersonnelManagementPageComponent } from './pages/personnel-management-page/personnel-management-page.component';
 import { AccountingEntryPageComponent } from './pages/accounting-entry-page/accounting-entry-page.component';
+import { TransactionDetailPageComponent } from './transaction-detail-page/transaction-detail-page.component';
 
 export const routes: Routes = [
     { path: 'project', component: ProjectPageComponent },
@@ -25,4 +26,5 @@ export const routes: Routes = [
     { path: 'fixed-assets', component: FixedAssetsPageComponent },
     { path: 'user-management', component: UserManagementPageComponent },
     { path: 'accounting-entry', component: AccountingEntryPageComponent },
+    { path: 'transaction-detail', component: TransactionDetailPageComponent },
 ];

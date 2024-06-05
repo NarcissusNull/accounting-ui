@@ -5,7 +5,7 @@
         <div *ngFor="let entry of incomeEntries.controls; let i = index" [formGroupName]="i" class="entry-row">
           <div nz-row nzGutter="15" nzJustify="start" nzAlign="top" nzType="flex" class="filter-container" style="min-width: 400px;">
             <div nz-col nzSpan="24" class="field-container" style="display: flex; flex-wrap: nowrap; min-width: 400px;">
-              <div style="min-width: 300px; flex: 1; margin-right: 10px;">
+              <div style="min-width: 200px; flex: 1; margin-right: 10px;">
                 <nz-form-item>
                   <nz-form-label style="margin-left: 2px;">项目名称</nz-form-label>
                 </nz-form-item>
@@ -45,7 +45,7 @@
                 </nz-form-item>
                 <nz-form-item>
                   <nz-form-control>
-                    <input nz-input formControlName="incomeAmount" placeholder="输入收入金���">
+                    <input nz-input formControlName="incomeAmount" placeholder="输入收入金额">
                   </nz-form-control>
                 </nz-form-item>
               </div>
@@ -117,7 +117,7 @@
                   </nz-form-control>
                 </nz-form-item>
               </div>
-              <div style="min-width: 200px; flex: 1; margin-right: 10px;">
+              <div style="min-width: 150px; flex: 1; margin-right: 10px;">
                 <nz-form-item>
                   <nz-form-label style="margin-left: 2px;">支出类别</nz-form-label>
                 </nz-form-item>
@@ -129,7 +129,7 @@
                   </nz-form-control>
                 </nz-form-item>
               </div>
-              <div style="min-width: 200px; flex: 1; margin-right: 10px;">
+              <div style="min-width: 150px; flex: 1; margin-right: 10px;">
                 <nz-form-item>
                   <nz-form-label style="margin-left: 2px;">支出分项</nz-form-label>
                 </nz-form-item>
@@ -151,7 +151,7 @@
                   </nz-form-control>
                 </nz-form-item>
               </div>
-              <div style="min-width: 200px; flex: 1; margin-right: 10px;">
+              <div style="min-width: 150px; flex: 1; margin-right: 10px;">
                 <nz-form-item>
                   <nz-form-label style="margin-left: 2px;">支出账户</nz-form-label>
                 </nz-form-item>

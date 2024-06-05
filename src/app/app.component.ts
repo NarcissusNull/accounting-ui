@@ -42,9 +42,9 @@ export class AppComponent {
       icon: 'account-book',
       children: [
         { label: '记账录入', link: '/accounting-entry' },
-        { label: '流水明细', link: '/transaction-details' },
-        { label: '报表', link: '/reports' },
-        { label: '资金账户', link: '/fund-account' }  // 新增的菜单项
+        { label: '流水明细', link: '/transaction-detail' },
+        // { label: '报表', link: '/reports' },
+        // { label: '资金账户', link: '/fund-account' }  // 新增的菜单项
       ]
     }
   ];
