@@ -30,18 +30,15 @@ import { NzDatePickerComponent, NzDatePickerModule } from 'ng-zorro-antd/date-pi
 export class AccountingEntryPageComponent implements OnInit {
   incomeForm!: FormGroup;
   expenseForm!: FormGroup;
-  incomeCategories$: Observable<any[]>;
-  expenseCategories$: Observable<any[]>;
-  accounts$: Observable<any[]>;
+  incomeCategories: any[] = [];
+  expenseCategories: any[] = [];
+  accounts: any[] = [];
+
 
   constructor(
     private fb: FormBuilder,
     private accountingEntryService: AccountingEntryService
-  ) {
-    this.incomeCategories$ = this.accountingEntryService.incomeCategories$;
-    this.expenseCategories$ = this.accountingEntryService.expenseCategories$;
-    this.accounts$ = this.accountingEntryService.accounts$;
-  }
+  ) {}
 
   ngOnInit(): void {
     this.incomeForm = this.fb.group({
@@ -52,9 +49,9 @@ export class AccountingEntryPageComponent implements OnInit {
       entries: this.fb.array([this.createExpenseForm()])
     });
 
-    this.accountingEntryService.loadIncomeCategories();
-    this.accountingEntryService.loadExpenseCategories();
-    this.accountingEntryService.loadAccounts();
+    this.accountingEntryService.loadIncomeCategories().subscribe(data => this.incomeCategories = data);
+    this.accountingEntryService.loadExpenseCategories().subscribe(data => this.expenseCategories = data);
+    this.accountingEntryService.loadAccounts().subscribe(data => this.accounts = data);
   }
 
   createIncomeForm(): FormGroup {
@@ -123,4 +120,3 @@ export class AccountingEntryPageComponent implements OnInit {
     }
   }
 }
-

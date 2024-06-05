@@ -22,7 +22,7 @@
                 <nz-form-item>
                   <nz-form-control>
                     <nz-select formControlName="incomeCategory">
-                      <nz-option *ngFor="let option of (incomeCategories$ | async)" [nzValue]="option.id" [nzLabel]="option.name"></nz-option>
+                      <nz-option *ngFor="let option of incomeCategories" [nzValue]="option.id" [nzLabel]="option.name"></nz-option>
                     </nz-select>
                   </nz-form-control>
                 </nz-form-item>
@@ -56,7 +56,7 @@
                 <nz-form-item>
                   <nz-form-control>
                     <nz-select formControlName="incomeAccount">
-                      <nz-option *ngFor="let option of (accounts$ | async)" [nzValue]="option.id" [nzLabel]="option.name"></nz-option>
+                      <nz-option *ngFor="let option of accounts" [nzValue]="option.id" [nzLabel]="option.name"></nz-option>
                     </nz-select>
                   </nz-form-control>
                 </nz-form-item>
@@ -124,7 +124,7 @@
                 <nz-form-item>
                   <nz-form-control>
                     <nz-select formControlName="expenseCategory">
-                      <nz-option *ngFor="let option of (expenseCategories$ | async)" [nzValue]="option.id" [nzLabel]="option.name"></nz-option>
+                      <nz-option *ngFor="let option of expenseCategories" [nzValue]="option.id" [nzLabel]="option.name"></nz-option>
                     </nz-select>
                   </nz-form-control>
                 </nz-form-item>
@@ -158,7 +158,7 @@
                 <nz-form-item>
                   <nz-form-control>
                     <nz-select formControlName="expenseAccount">
-                      <nz-option *ngFor="let option of (accounts$ | async)" [nzValue]="option.id" [nzLabel]="option.name"></nz-option>
+                      <nz-option *ngFor="let option of accounts" [nzValue]="option.id" [nzLabel]="option.name"></nz-option>
                     </nz-select>
                   </nz-form-control>
                 </nz-form-item>
