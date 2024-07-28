@@ -1,0 +1,98 @@
+<nz-layout class="layout" style="height: 100%;">
+  <nz-layout style="background-color: white;">
+    <nz-content>
+      <div class="filter-section">
+        <nz-form-item>
+          <nz-form-label [nzSpan]="4">项目名</nz-form-label>
+          <nz-form-control [nzSpan]="20">
+            <input nz-input placeholder="请输入项目名" [(ngModel)]="projectName" />
+          </nz-form-control>
+        </nz-form-item>
+        <nz-form-item>
+          <nz-form-label [nzSpan]="4">经营单位:</nz-form-label>
+          <nz-form-control [nzSpan]="20">
+            <nz-select nzPlaceHolder="请选择" [(ngModel)]="unit">
+              <nz-option nzValue="单位1" nzLabel="单位1"></nz-option>
+              <nz-option nzValue="单位2" nzLabel="单位2"></nz-option>
+            </nz-select>
+          </nz-form-control>
+        </nz-form-item>
+        <nz-form-item>
+          <nz-form-label [nzSpan]="4">付款方式:</nz-form-label>
+          <nz-form-control [nzSpan]="20">
+            <input nz-input placeholder="请输入付款方式" [(ngModel)]="paymentMethod" />
+          </nz-form-control>
+        </nz-form-item>
+        <nz-form-item>
+          <nz-form-label [nzSpan]="4">登记时间:</nz-form-label>
+          <nz-form-control [nzSpan]="20">
+            <nz-range-picker [(ngModel)]="registrationDate"></nz-range-picker>
+          </nz-form-control>
+        </nz-form-item>
+        <nz-form-item>
+          <nz-form-label [nzSpan]="4">撤项时间:</nz-form-label>
+          <nz-form-control [nzSpan]="20">
+            <nz-range-picker [(ngModel)]="withdrawalDate"></nz-range-picker>
+          </nz-form-control>
+        </nz-form-item>
+        <nz-form-item>
+          <nz-form-label [nzSpan]="4">备注:</nz-form-label>
+          <nz-form-control [nzSpan]="20">
+            <input nz-input placeholder="请输入备注" [(ngModel)]="remark" />
+          </nz-form-control>
+        </nz-form-item>
+      </div>
+      <nz-row>
+        <nz-col [nzSpan]="4">
+          <button nz-button nzType="primary">新建</button>
+        </nz-col>
+        <nz-col [nzSpan]="20" style="text-align: right;">
+          <button nz-button nzType="primary">查询</button>
+          <button nz-button (click)="resetFilters()">重置</button>
+        </nz-col>
+      </nz-row>
+      <nz-table style="margin-top: 10px;" #basicTable [nzData]="listOfData" [nzPageSize]="10">
+        <thead>
+          <tr>
+            <th>项目名</th>
+            <th>项目类型</th>
+            <th>登记日期</th>
+            <th>经营单位</th>
+            <th>税点</th>
+            <th>合同金额</th>
+            <th>附加费</th>
+            <th>合同制</th>
+            <th>实际同人</th>
+            <th>合同份数</th>
+            <th>合同开始日期</th>
+            <th>合同结束日期</th>
+            <th>地点</th>
+            <th>付款方式</th>
+            <th>撤项时间</th>
+            <th>备注</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let data of basicTable.data">
+            <td>{{ data.name }}</td>
+            <td>{{ data.type }}</td>
+            <td>{{ data.registrationDate }}</td>
+            <td>{{ data.unit }}</td>
+            <td>{{ data.tax }}</td>
+            <td>{{ data.amount }}</td>
+            <td>{{ data.additionalFee }}</td>
+            <td>{{ data.contractSystem }}</td>
+            <td>{{ data.actualPeople }}</td>
+            <td>{{ data.contractCopies }}</td>
+            <td>{{ data.startDate }}</td>
+            <td>{{ data.endDate }}</td>
+            <td>{{ data.location }}</td>
+            <td>{{ data.paymentMethod }}</td>
+            <td>{{ data.withdrawalDate }}</td>
+            <td>{{ data.remark }}</td>
+          </tr>
+        </tbody>
+      </nz-table>
+    </nz-content>
+  </nz-layout>
+</nz-layout>

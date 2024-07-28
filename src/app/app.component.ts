@@ -31,22 +31,9 @@ export class AppComponent {
       label: '信息管理',
       icon: 'appstore',
       children: [
-        { label: '项目管理', link: '/project' },
-        { label: '人员管理', link: '/personnel-management' },
-        { label: '库存管理', link: '/inventory-management' },
-        { label: '工资管理', link: '/salary-management' }
+        { label: '项目管理', link: '/project-management' },
       ]
     },
-    {
-      label: '财务记账',
-      icon: 'account-book',
-      children: [
-        { label: '记账录入', link: '/accounting-entry' },
-        { label: '流水明细', link: '/transaction-detail' },
-        // { label: '报表', link: '/reports' },
-        // { label: '资金账户', link: '/fund-account' }  // 新增的菜单项
-      ]
-    }
   ];
 }
 

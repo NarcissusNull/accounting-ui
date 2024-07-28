@@ -1,0 +1,19 @@
+.layout {
+  height: 100%;
+}
+
+.filter-section {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin-bottom: 16px;
+  background-color: white;
+}
+
+.filter-section nz-form-item {
+  flex: 1 1 30%;
+}
+
+button {
+  margin-right: 8px;
+}
